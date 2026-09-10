@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Logit Refiner restores intra-scale dependencies in visual autoregressive models. A lightweight add-on to frozen VAR and Infinity backbones. ECCV 2026.">
+  <meta name="citation_title" content="Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling">
+  <meta name="citation_author" content="Li, Meimingwei">
+  <meta name="citation_author" content="Baumann, Stefan Andreas">
+  <meta name="citation_author" content="Krause, Felix">
+  <meta name="citation_author" content="Ommer, Björn">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="European Conference on Computer Vision (ECCV)">
+  <meta name="citation_pdf_url" content="https://compvis.github.io/logit-refiner/static/paper/logit-refiner.pdf">
+  <meta name="theme-color" content="#2563eb">
+  <meta property="og:title" content="Logit Refiner · ECCV 2026">
+  <meta property="og:description" content="Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling.">
+  <meta property="og:type" content="website">
+  <title>Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling</title>
+  <link rel="canonical" href="https://compvis.github.io/logit-refiner/">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/logit-refiner.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="static/js/index.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#overview">Skip to content</a>
+  <div class="more-works-container">
+    <button id="other-papers-toggle" hidden class="more-works-btn" type="button"  title="Other Papers" aria-expanded="false" aria-controls="moreWorksDropdown">
+      <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 00-2 2v14l4-3h12a2 2 0 002-2V5a2 2 0 00-2-2m0 11H6.33L5 15.25V5h14zm-9-7h7v2h-7zm0 3h5v2h-5zM7 7h2v5H7z"/></svg>
+      <span>Other Papers</span>
+      <svg class="icon-svg dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown" aria-hidden="true" hidden>
+      <div class="dropdown-header">
+        <h4>Other Papers</h4>
+        <button id="other-papers-close" type="button" class="close-btn"  aria-label="Close other papers">
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.7 2.88 18.3 9.17 12 2.88 5.71 4.29 4.29l6.3 6.3 6.29-6.3z"/></svg>
+        </button>
+      </div>
+      <div class="works-list">
+        <div class="works-section-label">Related Work</div>
+        <a href="https://github.com/FoundationVision/VAR" class="work-item" target="_blank" rel="noreferrer">
+          <h5>VAR</h5><span class="work-venue">NeurIPS 2024</span>
+          <p>Visual autoregressive modeling through next-scale prediction.</p>
+        </a>
+        <div class="works-section-label">From the Authors</div>
+        <a href="https://compvis.github.io/rayder/" class="work-item" target="_blank" rel="noreferrer">
+          <h5>RayDer</h5><span class="work-venue">ECCV 2026</span>
+          <p>Scalable self-supervised novel view synthesis from real-world video.</p>
+        </a>
+        <a href="https://compvis.github.io/myriad/" class="work-item" target="_blank" rel="noreferrer">
+          <h5>Envisioning the Future, One Step at a Time</h5><span class="work-venue">CVPR 2026</span>
+          <p>Autoregressive diffusion for motion reasoning with sparse trajectories.</p>
+        </a>
+        <a href="https://compvis.github.io/sparse-guidance/" class="work-item" target="_blank" rel="noreferrer">
+          <h5>Guiding Token-Sparse Diffusion Models</h5><span class="work-venue">CVPR 2026</span>
+          <p>Improving diffusion generation with token-sparse guidance.</p>
+        </a>
+        <a href="https://compvis.github.io/flow-poke-transformer/" class="work-item" target="_blank" rel="noreferrer">
+          <h5>What If – Flow Poke Transformer</h5><span class="work-venue">ICCV 2025</span>
+          <p>Understanding motion through sparse interactions in a single image.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+<main id="top">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop has-text-centered">
+          <p class="publication-venue">ECCV 2026</p>
+          <h1 class="title publication-title">Logit Refiner: Improving Visual Autoregressive Models<br class="mobile-break"> via Intra-Scale Dependency Modeling</h1>
+
+          <div class="publication-authors">
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=FpT8ECwAAAAJ" target="_blank" rel="noreferrer">Meimingwei Li</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://stefan-baumann.eu/" target="_blank" rel="noreferrer">Stefan Andreas Baumann</a><sup>1,2,*</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=2Il9dwMAAAAJ" target="_blank" rel="noreferrer">Felix Krause</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://ommer-lab.com/people/ommer/" target="_blank" rel="noreferrer">Björn Ommer</a><sup>1,2</sup></span>
+          </div>
+
+          <div class="publication-affiliations">
+            <span><sup>1</sup>CompVis @ LMU Munich</span>
+            <span><sup>2</sup>MCML</span>
+          </div>
+
+          <p class="equal-contrib"><sup>*</sup>Equal contribution</p>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded is-dark" href="static/paper/logit-refiner.pdf" target="_blank" rel="noreferrer">
+                <span class="icon"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v14H6zm7 1.5V9h5.5zM9 13h2.5a2.5 2.5 0 010 5H10v3H9zm1 1v3h1.5a1.5 1.5 0 000-3zm5 0c1.66 0 3 1.34 3 3v1c0 1.66-1.34 3-3 3h-2v-7zm-1 1v5h1a2 2 0 002-2v-1a2 2 0 00-2-2zm-8 0h2v1H7v1h1v1H7v2H6z"/></svg></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/CompVis/logit-refiner" target="_blank" rel="noreferrer">
+                <span class="icon"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A12 12 0 008.2 23.9c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.73.08-.72.08-.72 1.2.09 1.84 1.22 1.84 1.22 1.08 1.82 2.82 1.3 3.5.99.1-.77.42-1.3.76-1.6-2.67-.3-5.47-1.32-5.47-5.86 0-1.3.47-2.37 1.24-3.21-.13-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.23A11.6 11.6 0 0112 6.6c1.02 0 2.05.14 3.01.4 2.29-1.55 3.29-1.23 3.29-1.23.67 1.63.26 2.83.13 3.13.77.84 1.23 1.91 1.23 3.21 0 4.55-2.8 5.55-5.48 5.85.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58A12 12 0 0012 .5"/></svg></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a class="external-link button is-normal is-rounded is-dark" href="#BibTeX" >
+                <span class="icon"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.27 5.57 8.3 5 6 5a4 4 0 00-4 4v9a1 1 0 001.45.89C5.05 18.09 6.39 17.75 8 17.75c1.82 0 3.54.43 4 1 .46-.57 2.18-1 4-1 1.61 0 2.95.34 4.55 1.14A1 1 0 0022 18V9a4 4 0 00-4-4c-2.3 0-4.27.57-6 1.5M4 9a2 2 0 012-2c2.04 0 3.79.53 5 1.33v8.2c-1.3-.5-2.67-.78-4-.78-1.03 0-2.03.14-3 .42zm16 7.17c-.97-.28-1.97-.42-3-.42-1.33 0-2.7.28-4 .78v-8.2c1.21-.8 2.96-1.33 5-1.33a2 2 0 012 2z"/></svg></span>
+                <span>BibTeX</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  <section class="hero teaser" aria-label="Paper teaser">
+    <div class="hero-body"><div class="container is-max-desktop">
+      <figure class="teaser-figure">
+        <a href="static/images/logit_refiner_teaser.png" aria-label="Open the teaser at full resolution"><img width="2000" height="889" src="static/images/logit_refiner_teaser.png" alt="Paired VAR and Infinity samples show improved spatial coherence with Logit Refiner; the FID scaling curve improves across backbone sizes." fetchpriority="high"></a>
+        <figcaption><strong>Better joint samples from the same pretrained backbone.</strong> Logit Refiner restores the dependencies that parallel within-scale sampling discards, improving both spatial coherence and generation quality.</figcaption>
+      </figure>
+    </div></div>
+  </section>
+  <nav class="section-nav" aria-label="Paper sections"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#text-to-image">Text-to-image</a><a href="#efficiency">Efficiency</a><a href="#BibTeX">Citation</a></nav>
+  <section class="section hero is-light" id="overview"><div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Correct marginals. Incoherent joint samples.</h2>
+    <div class="content tldr-copy"><p>Visual autoregressive models generate images from coarse to fine, sampling all tokens within each scale independently. Even accurate per-token predictions can produce neighboring patches that do not fit together. <em>Logit Refiner restores these missing dependencies</em> with a small causal transformer conditioned on frozen backbone features. The backbone still runs once per scale; only the lightweight refiner samples sequentially.</p></div>
+  </div></section>
+  <section class="section key-numbers-section" aria-label="Key results"><div class="container is-max-desktop"><div class="key-numbers">
+    <div class="key-number"><span class="key-value">~10<span class="key-unit">%</span></span><span class="key-label">Additional parameters</span><span class="key-context">A two-layer causal refiner</span></div>
+    <div class="key-number"><span class="key-value">&lt;5<span class="key-unit">%</span></span><span class="key-label">Extra training compute</span><span class="key-context">Pretrained backbone stays frozen</span></div>
+    <div class="key-number"><span class="key-value">1.83</span><span class="key-label">FID at 1.1B parameters</span><span class="key-context">Better than VAR-d30: 1.92 at 2B</span></div>
+    <div class="key-number"><span class="key-value">1.76</span><span class="key-label">FID with VAR-d30 + Refiner</span><span class="key-context">ImageNet 256 × 256 · 50k samples</span></div>
+  </div></div></section>
+
+  <section class="section" id="method"><div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">A small correction to how tokens are sampled</h2>
+    <div class="content paper-copy"><p>The backbone already reasons across the current scale. The bottleneck comes afterward: independently sampling its token distributions discards their dependencies. Logit Refiner uses those rich hidden states to model the remaining dependencies with just two causal transformer blocks.</p></div>
+    <figure class="paper-figure figure-padded"><a href="static/images/var_logit_refiner.png"><img width="2000" height="480" src="static/images/var_logit_refiner.png" alt="Architecture: VAR predicts a scale in parallel; Logit Refiner combines frozen hidden states with previously sampled tokens and predicts the next token causally." loading="lazy"></a><figcaption><strong>Parallel backbone, autoregressive refiner.</strong> Only the lightweight refiner runs sequentially within each scale, using KV caching. The expensive backbone still computes the scale’s hidden states in a single parallel pass.</figcaption></figure>
+    <div class="step-grid">
+      <div><span class="step-number">01</span><h3>Reuse pretrained features</h3><p>Keep the VAR backbone frozen. Combine each hidden state with an embedding of the previous sampled token.</p></div>
+      <div><span class="step-number">02</span><h3>Learn the missing dependencies</h3><p>Train the refiner with teacher forcing and a causal mask. Identity initialization preserves the base model’s predictions at the start of training.</p></div>
+      <div><span class="step-number">03</span><h3>Sample a coherent scale</h3><p>Generate tokens in raster order, conditioning each prediction on tokens already sampled within the same scale.</p></div>
+    </div>
+    <details class="details-figure"><summary>Why correct per-token probabilities are not enough</summary><figure class="paper-figure figure-padded"><a href="static/images/logit_refiner_checkerboard.png"><img width="2000" height="436" src="static/images/logit_refiner_checkerboard.png" alt="A dataset has two valid 2-by-2 checkerboards. Independent sampling from correct 50/50 pixel marginals produces 16 possible patterns; joint sampling preserves the checkerboard constraint." loading="lazy"></a><figcaption><strong>A minimal example.</strong> Two valid checkerboards have identical per-pixel marginals. Independent sampling admits 16 patterns, of which only two are valid. Conditioning on earlier tokens recovers the joint constraint.</figcaption></figure></details>
+  </div></section>
+
+  <section class="section hero is-light" id="results"><div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Better generation at every backbone scale</h2>
+    <div class="content paper-copy"><p>Across VAR backbones from 310M to 2B parameters, the refiner improves FID and recall. <strong>VAR-d24 + Refiner outperforms the larger VAR-d30 backbone at roughly half the total parameter count.</strong></p></div>
+    <div class="results-table-wrapper" role="region" aria-label="ImageNet results, horizontally scrollable" tabindex="0"><table class="results-table compact-results">
+      <caption>Class-conditional ImageNet · 256 × 256</caption>
+      <thead><tr><th scope="col">Model</th><th scope="col">Total params</th><th scope="col">FID ↓</th><th scope="col">IS ↑</th><th scope="col">Precision ↑</th><th scope="col">Recall ↑</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">VAR-d16</th><td>310M</td><td>3.30</td><td>274.4</td><td>0.84</td><td>0.51</td></tr>
+        <tr class="ours-row"><th scope="row">+ Logit Refiner</th><td>356M</td><td><strong>2.81</strong></td><td>267.2</td><td>0.81</td><td><strong>0.56</strong></td></tr>
+        <tr><th scope="row">VAR-d20</th><td>600M</td><td>2.57</td><td>302.6</td><td>0.83</td><td>0.56</td></tr>
+        <tr class="ours-row"><th scope="row">+ Logit Refiner</th><td>671M</td><td><strong>2.17</strong></td><td>274.7</td><td>0.80</td><td><strong>0.60</strong></td></tr>
+        <tr><th scope="row">VAR-d24</th><td>1.0B</td><td>2.09</td><td>312.9</td><td>0.83</td><td>0.57</td></tr>
+        <tr class="ours-row"><th scope="row">+ Logit Refiner</th><td>1.1B</td><td><strong>1.83</strong></td><td>288.2</td><td>0.79</td><td><strong>0.63</strong></td></tr>
+        <tr><th scope="row">VAR-d30</th><td>2.0B</td><td>1.92</td><td>323.1</td><td>0.82</td><td>0.58</td></tr>
+        <tr class="ours-row"><th scope="row">+ Logit Refiner</th><td>2.2B</td><td><strong>1.76</strong></td><td>319.4</td><td>0.80</td><td><strong>0.62</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note">50k generated samples; values reproduced from the paper’s system-level comparison. CFG and top-k are swept individually. The lower IS values accompany the lower guidance scales that are FID-optimal for the refiner; varying guidance trades off FID and IS. ↓ lower is better; ↑ higher is better.</p>
+    <div class="figure-stack"><figure class="paper-figure"><a href="static/images/logit_refiner_scaling.png"><img width="2000" height="1043" src="static/images/logit_refiner_scaling.png" alt="Paired samples across VAR depths 16, 20, 24, and 30 compare the baseline with Logit Refiner, showing improved spatial consistency at every model size." loading="lazy"></a><figcaption><strong>Scaling alone leaves spatial inconsistencies.</strong> Paired samples use the same class and seed. Within each pair, vanilla VAR is above and VAR + Refiner below.</figcaption></figure></div>
+    <details class="details-figure"><summary>Controlled ablation: what drives the gains?</summary>
+      <div class="results-table-wrapper" role="region" aria-label="VAR-d16 ablation results" tabindex="0"><table class="results-table compact-results"><caption>Same VAR-d16 backbone · 30 training epochs for each added-training variant</caption><thead><tr><th scope="col">Variant</th><th scope="col">Joint sampling</th><th scope="col">Params</th><th scope="col">FID ↓</th></tr></thead><tbody>
+        <tr><th scope="row">VAR-d16 baseline</th><td>No</td><td>310M</td><td>3.30</td></tr><tr><th scope="row">Additional backbone training</th><td>No</td><td>310M</td><td>3.12</td></tr><tr><th scope="row">Parallel refiner</th><td>No</td><td>356M</td><td>3.15</td></tr><tr class="ours-row"><th scope="row">Autoregressive refiner</th><td>Yes</td><td>356M</td><td><strong>2.81</strong></td></tr>
+      </tbody></table></div><p class="table-note">The parallel and autoregressive refiners have the same architecture and parameter count, with different attention masks and sampling rules. The larger gain comes from modeling the within-scale joint distribution.</p>
+    </details>
+  </div></section>
+
+  <section class="section" id="text-to-image"><div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">The same idea transfers to text-to-image</h2>
+    <div class="content paper-copy"><p>Applied to a frozen Infinity-2B backbone, Logit Refiner improves structural coherence in 1024 × 1024 text-to-image generation. Refinement is applied only to early stages, up to 6 × 6 tokens.</p></div>
+    <figure class="paper-figure"><a href="static/images/logit_refiner_t2i.png"><img width="2000" height="987" src="static/images/logit_refiner_t2i.png" alt="Selected Infinity-2B text-to-image comparisons: baseline images on top and refined images below; orange markings identify inconsistencies in the baseline." loading="lazy"></a><figcaption><strong>From class labels to open-vocabulary prompts.</strong> Infinity-2B without (top) and with (bottom) the refiner. Orange marks highlight inconsistencies in the original images. These are selected qualitative examples.</figcaption></figure>
+    <div class="results-table-wrapper compact-table-wrapper"><table class="results-table compact-results"><caption>HPSv3 automated preference evaluation</caption><thead><tr><th scope="col">Model</th><th scope="col">Average score ↑</th></tr></thead><tbody><tr><th scope="row">Infinity-2B</th><td>9.79</td></tr><tr class="ours-row"><th scope="row">+ Logit Refiner</th><td><strong>9.91</strong></td></tr></tbody></table></div>
+    <p class="table-note">600 images: the first 50 prompts in each of 12 HPSv3 subsets. This is an automated preference score; gains vary by subset.</p>
+  </div></section>
+
+  <section class="section hero is-light" id="efficiency"><div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Most of the gain comes early</h2>
+    <div class="content paper-copy"><p>For VAR-d16, training only the refiner takes <strong>66 H200-hours</strong> and improves FID from 3.30 to 2.81. Training the full integrated model from scratch reaches 2.57, but costs 1,845 H200-hours.</p><p>At inference, refining only early scales gives a useful quality–speed tradeoff. Refining through 10 × 10 tokens retains <strong>99% of the full FID improvement while reducing the refiner’s overhead by 71%</strong>. Through 8 × 8, it retains 88% with an 84% overhead reduction.</p></div>
+    <div class="figure-stack"><figure class="paper-figure figure-padded"><a href="static/images/logit_refiner_speed_tradeoff_scaling.png"><img width="2000" height="937" src="static/images/logit_refiner_speed_tradeoff_scaling.png" alt="FID versus sampling time across VAR backbone depths, comparing baseline and refined models at batch sizes 1 and 16." loading="lazy"></a><figcaption><strong>Quality and inference cost across model sizes.</strong> At batch size 16, the refiner improves the quality–efficiency frontier at every backbone scale. At batch size 1, it adds intermediate operating points at smaller depths and dominates from d24 onward. Sequential refinement adds latency; its benefit depends on model size and batch size.</figcaption></figure></div>
+    <details class="details-figure"><summary>See the early-scale tradeoff for VAR-d16</summary><figure class="paper-figure figure-padded"><a href="static/images/logit_refiner_tradeoff.png"><img width="2000" height="1849" src="static/images/logit_refiner_tradeoff.png" alt="VAR-d16 FID and latency tradeoff as Logit Refiner is applied to progressively more scales." loading="lazy"></a><figcaption>Refine only the first few scales to retain most of the quality improvement with less sequential sampling.</figcaption></figure></details>
+  </div></section>
+
+  <section class="section" id="BibTeX"><div class="container is-max-desktop">
+    <div class="bibtex-header"><h2 class="title is-3 section-title">Citation</h2><button class="copy-bibtex-btn" id="copy-bibtex" type="button" hidden>Copy BibTeX</button></div>
+    <pre><code id="bibtex-code">@inproceedings{li2026logitrefiner,
+  title = {Logit Refiner: Improving Visual Autoregressive Models
+           via Intra-Scale Dependency Modeling},
+  author = {Li, Meimingwei and Baumann, Stefan Andreas and
+            Krause, Felix and Ommer, Bj{\"o}rn},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year = {2026},
+  url = {https://compvis.github.io/logit-refiner/}
+}</code></pre>
+    <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    <p><a href="static/paper/logit-refiner.bib" download>Download BibTeX</a></p>
+  </div></section>
+
+</main>
+  <footer class="footer">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <p>Website template adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noreferrer">Academic Project Page Template</a>.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

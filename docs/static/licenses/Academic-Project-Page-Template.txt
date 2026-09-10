@@ -1,0 +1,12 @@
+Academic Project Page Template
+By Eliahu Horwitz
+https://github.com/eliahuhorwitz/Academic-project-page-template
+
+Parts of the template were adopted from the Nerfies project page:
+https://nerfies.github.io/
+
+The template is licensed under Creative Commons Attribution-ShareAlike 4.0
+International: https://creativecommons.org/licenses/by-sa/4.0/
+
+This adaptation customizes typography, colors, paper content, figures,
+tables, and navigation for the Logit Refiner paper.
